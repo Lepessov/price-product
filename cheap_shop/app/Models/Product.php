@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +12,6 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id',
         'shop_id',
         'category_id',
         'title',
@@ -19,9 +20,13 @@ class Product extends Model
     ];
 
     public function categories(){
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
     public function shops(){
-        return $this->hasMany(Shop::class);
+        return $this->belongsTo(Shop::class);
+    }
+
+    public function scopeFilter(Builder $builder,QueryFilter $filter){
+        return $filter->apply($builder);
     }
 }

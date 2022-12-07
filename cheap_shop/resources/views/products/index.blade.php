@@ -7,18 +7,29 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach ($categories as $category)
-        <p>
-           <a href="products/{{$category->id}}">{{$category->title}}</a> 
-        </p>
-    @endforeach
+  <div>
+      <form action="{{route('product')}}" method="get">
+              <select name="category_id" >
+          @foreach($categories as $category)
+                  <option value="{{$category->id}}">{{$category->title}}</option>
+          @endforeach
+              </select>
 
-    @foreach ($products as $product)
-        <p>
-            {{$product->title}}
-            {{$product->price}}
-            {{$product->image}}
-        </p>
-    @endforeach
+          <button type="submit">поиск</button>
+      </form>
+
+
+  </div>
+
+  @foreach($products as $product)
+      <div class="col-lg-4">
+          <div class="card mb-3" style="width: 18rem;">
+              <div class="card-body">
+                  <h5 class="card-title">{{$product->title}}</h5>
+                  <p class="card-text">{{$product->price}}...</p>
+              </div>
+          </div>
+      </div>
+  @endforeach
 </body>
 </html>

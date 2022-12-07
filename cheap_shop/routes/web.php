@@ -19,8 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['namespace'=>'App\Http\Controllers\Product','prefix'=>'products'],function(){
-    Route::get('/',  'IndexController');
-    Route::get('/{product}', 'FilterController');
+    Route::get('/',  'IndexController')->name('product');
 
 
 });
