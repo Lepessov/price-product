@@ -8,14 +8,26 @@ use App\Http\Requests\Product\FilterRequest;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function __invoke(ProductFilter $filter) {
-    $products=Product::filter($filter)->get();
+    $product=Product::filter($filter)->get();
     $categories= Category::all();
-        return view('products.index',compact('categories','products'));
+    $shops=Shop::all();
+    if (isset($filter->request->input()['sort'])) {
+        $sort = $filter->request->input()['sort'];
+        if ($sort == 'asc')
+            $products = $product->sortBy('price');
+        elseif ($sort == 'desc')
+            $products = $product->sortByDesc('price');
+
+    }
+    else $products = $product;
+
+        return view('products.index',compact('categories','products','shops'));
     }
 
 

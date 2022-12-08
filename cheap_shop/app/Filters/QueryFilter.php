@@ -36,6 +36,7 @@ class QueryFilter
 
     protected function paramToArray($param)
     {
-        return explode($this->delimiter, $param);
+        return explode($this->delimiter, implode($this->delimiter, $param));
+
     }
 }
