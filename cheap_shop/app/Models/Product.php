@@ -29,4 +29,12 @@ class Product extends Model
     public function scopeFilter(Builder $builder,QueryFilter $filter){
         return $filter->apply($builder);
     }
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function productComments()
+    {
+        return $this->hasMany(ProductComment::class);
+    }
 }

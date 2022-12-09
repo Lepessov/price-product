@@ -8,7 +8,7 @@
 </head>
 <body>
   <div>
-      <form action="{{route('product')}}" method="get">
+      <form action="{{route('product.index')}}" method="get">
           <div style="display: flex;justify-content: space-around">
          <div style="display:flex;flex-direction: column">
          <h1>Фильтр</h1>
@@ -48,7 +48,8 @@
                   <div class="col-lg-4">
                       <div class="card mb-3" style="width: 18rem;">
                           <div class="card-body">
-                              <h5 class="card-title">{{$product->title}}</h5>
+                              <a href="{{route('product.show',$product->id)}}"><i class="far fa-eye"></i><h5 class="card-title">{{$product->title}}</h5></a>
+
                               <p class="card-text">{{$product->price}}...</p>
                           </div>
                       </div>
