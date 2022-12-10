@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers\Product;
 use App\Filters\ProductFilter;
@@ -14,18 +15,10 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function __invoke(ProductFilter $filter) {
-    $product=Product::filter($filter)->get();
+    $products=Product::filter($filter)->get();
     $categories= Category::all();
     $shops=Shop::all();
-    if (isset($filter->request->input()['sort'])) {
-        $sort = $filter->request->input()['sort'];
-        if ($sort == 'asc')
-            $products = $product->sortBy('price');
-        elseif ($sort == 'desc')
-            $products = $product->sortByDesc('price');
 
-    }
-    else $products = $product;
 
         return view('products.index',compact('categories','products','shops'));
     }

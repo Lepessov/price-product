@@ -9,6 +9,7 @@
 <body>
   <div>
       <form action="{{route('product.index')}}" method="get">
+
           <div style="display: flex;justify-content: space-around">
          <div style="display:flex;flex-direction: column">
          <h1>Фильтр</h1>
@@ -38,6 +39,11 @@
                      </select>
 
              </div>
+
+                 <div class="mb-3">
+                     <label class="form-label">Поиск</label>
+                     <input name="search_field" @if(isset($_GET['search_field'])) value="{{$_GET['search_field']}}" @endif type="text" class="form-control"  placeholder="Введите что то">
+                 </div>
              </div>
           <button type="submit" style="width:50%;margin-top: 20px">Фильтр</button>
          </div>
