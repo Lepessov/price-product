@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\FilterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::group(['namespace'=>'App\Http\Controllers\Product','prefix'=>'products'],function(){
-    Route::get('/',  'IndexController');
-    Route::get('/{product}', 'FilterController');
+Route::group(['namespace'=>'App\Http\Controllers'],function (){
+    Route::get('/','MainController')->name('main');
 
+Route::group(['namespace'=>'Product','prefix'=>'products'],function(){
+    Route::get('/',  'IndexController')->name('product.index');
+    Route::get('/{product}',  'ShowController')->name('product.show');
+    Route::post('/{product}/comments',  'CommentController')->name('comment.show');
+
+
+});
 
 });
 // Route::get('/products', [ProductController::class, 'index']);
 // Route::get('/categories', [CategoryController::class, 'index']);
 // Route::get('/products/{category}', ProductController::class, 'filter');
+
+Auth::routes();
+

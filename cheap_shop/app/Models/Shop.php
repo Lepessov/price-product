@@ -16,6 +16,6 @@ class Shop extends Model
     ];
 
     public function areas(){
-        return $this->hasMany(Area::class);
+        return $this->belongsTo(Area::class);
     }
 }
