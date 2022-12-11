@@ -12,13 +12,11 @@ use Illuminate\Http\Request;
 class ShowController extends Controller
 {
     public function __invoke(Product $product) {
+         $shop = Shop::where('id',$product->shop_id)->first()->title;
+         $category = Category::where('id',$product->category_id)->first()->title;
+         $comments = ProductComment::where('product_id',$product->id)->get();
 
-     $shop=Shop::where('id',$product->shop_id)->first()->title;
-     $category=Category::where('id',$product->category_id)->first()->title;
-     $comments = ProductComment::where('product_id',$product->id)->get();
-       return view('products.show',compact('product','shop','category','comments'));
+         return view('products.show',compact('product','shop','category','comments'));
     }
-
-
 }
 

@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('area_id')->constrained('areas');
+            $table->unsignedBigInteger('area_id');
             $table->timestamps();
+
+            $table->foreign('area_id')->references('id')->on('areas');
         });
     }
 

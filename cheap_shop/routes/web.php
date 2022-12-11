@@ -19,18 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace'=>'App\Http\Controllers'],function (){
     Route::get('/','MainController')->name('main');
 
-Route::group(['namespace'=>'Product','prefix'=>'products'],function(){
-    Route::get('/',  'IndexController')->name('product.index');
-    Route::get('/{product}',  'ShowController')->name('product.show');
-    Route::post('/{product}/comments',  'CommentController')->name('comment.show');
-
-
+    Route::group(['namespace'=>'Product','prefix'=>'products'],function(){
+        Route::get('/',  'IndexController')->name('product.index');
+        Route::get('/{product}',  'ShowController')->name('product.show');
+        Route::post('/{product}/comments',  'CommentController')->name('comment.show');
+    });
 });
-
-});
-// Route::get('/products', [ProductController::class, 'index']);
-// Route::get('/categories', [CategoryController::class, 'index']);
-// Route::get('/products/{category}', ProductController::class, 'filter');
-
 Auth::routes();
 

@@ -11,12 +11,10 @@ class FilterController extends Controller
 {
     public function __invoke(Request $request, $id) {
        $query = Product::query();
-      $products= $query->where('category_id', $id)->get();
-      
+       $products= $query->where('category_id', $id)->get();
 
-       return view('products.filtered', compact('products')); 
+
+       return view('products.filtered', compact('products'));
     }
-
-   
 }
 
