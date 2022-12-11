@@ -15,14 +15,11 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function __invoke(ProductFilter $filter) {
-    $products=Product::filter($filter)->get();
-    $categories= Category::all();
-    $shops=Shop::all();
-
+        $products = Product::filter($filter)->get();
+        $categories = Category::all();
+        $shops = Shop::all();
 
         return view('products.index',compact('categories','products','shops'));
     }
-
-
 }
 

@@ -15,10 +15,8 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
-
         // error_message если user_id или post_id указанные юзером не верные тогда возвращает ошибку
-
-        if(Product::where('id',$data['post_id'])->first() == null || User::where('id',$data['user_id'])->first() == null) {
+        if(Product::where('id', $data['post_id'])->first() == null || User::where('id', $data['user_id'])->first() == null) {
             $error_message= "user_id or post_id is wrong.";
         }
 

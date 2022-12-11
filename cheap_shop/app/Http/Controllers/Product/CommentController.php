@@ -13,16 +13,13 @@ class CommentController extends Controller
 {
     public function __invoke(Product $product,StoreRequest $request) {
         $data = $request->validated();
-      $comment = new ProductComment();
-      $comment->product_id=$product->id;
-      $comment->user_id=$data['user_id'];
-      $comment->comment=$data['comment'];
-      $comment->save();
-      return  redirect()->back();
+        $comment = new ProductComment();
+        $comment->product_id = $product->id;
+        $comment->user_id = $data['user_id'];
+        $comment->comment = $data['comment'];
+        $comment->save();
 
-
+        return  redirect()->back();
     }
-
-
 }
 
