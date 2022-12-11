@@ -1,0 +1,26 @@
+.card{
+  width: 250px;
+  height: 300px;
+  background-color: rgba(12, 19, 45, 0.82);
+  margin: 10px;
+  border-radius: 10px;
+  overflow:hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  cursor: pointer;
+  &__img{
+    background-color: orange;
+    color: black;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__info{
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
